@@ -22,7 +22,17 @@ int main(){
     cout<<"address of cht = "<<&cht<<endl;
 
     cout<<" Using & and * operator :"<<endl<<"-------------------------"<<endl;
+    cout<<"value at address of m = "<<*(&m)<<endl;
+    cout<<"value at address of fx = "<<*(&fx)<<endl;
+    cout<<"value at address of cht = "<<*(&cht)<<endl;
+
+    cout<<" Using only pointer variable :"<<endl<<"---------------------------"<<endl;
+    cout<<"address of m = "<<ptr1<<endl;
+    cout<<"address of fx = "<<ptr2<<endl;
+    cout<<"address of cht = "<<ptr3<<endl;
+
+    cout<<" Using only pointer operator :"<<endl<<"-------------------------"<<endl;
     cout<<"value at address of m = "<<*ptr1<<endl;
-    cout<<"address of fx = "<<*ptr2<<endl;
-    cout<<"address of cht = "<<*ptr3<<endl;
+    cout<<"value at address of fx = "<<*ptr2<<endl;
+    cout<<"value at address of cht = "<<*ptr3<<endl;
 }
