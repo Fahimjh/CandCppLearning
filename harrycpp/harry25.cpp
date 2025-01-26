@@ -16,12 +16,10 @@ class employee{
 };
 
 int main(){
-    employee fahim,sensei,cr;
-    fahim.setInfo();
-    fahim.getInfo();
-    sensei.setInfo();
-    sensei.getInfo();
-    cr.setInfo();
-    cr.getInfo();
+    employee emp[5];
+    for(int i=0;i<5;i++){
+        emp[i].setInfo();
+        emp[i].getInfo();
+    }
     return 0;
 }
