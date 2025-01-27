@@ -10,8 +10,9 @@ class calculator{
 };
 
 class complex{
-    friend int calculator::sumRealComplex(complex,complex);
-    friend int calculator::addSum(complex,complex);
+    //friend int calculator::sumRealComplex(complex,complex);
+    //friend int calculator::addSum(complex,complex);
+    friend class calculator;
     int num1,num2;
     public:
     void setNum(int a, int b){
