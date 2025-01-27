@@ -2,6 +2,8 @@
 using namespace std;
 
 class complex{
+    friend int addComplex(complex,complex);
+    friend int addRealComplex(complex,complex);
     int num1,num2;
     public:
     complex(int a,int b){
@@ -12,9 +14,17 @@ class complex{
         cout<<"Your complex number: "<<num1<<" + "<<num2<<" i"<<endl;
     }
 };
-
+int addComplex(complex a,complex b){
+    return a.num1+b.num1;
+}
+int addRealComplex(complex a,complex b){
+    return a.num2+b.num2;
+}
 int main(){
     complex c1(2,4),c2(3,6);
     c1.getData();
     c2.getData();
+    cout<<"Summation of your first part: "<<addComplex(c1,c2)<<endl;
+    cout<<"Summation of your second part: "<<addRealComplex(c1,c2)<<"i"<<endl;
+    return 0;
 }
