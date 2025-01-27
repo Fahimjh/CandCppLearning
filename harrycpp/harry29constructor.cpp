@@ -14,6 +14,10 @@ class complex{
         num1=a;
         num2=b;
     }
+    complex(int a){//Constructor with single parameter
+        num1=a;
+        num2=0;
+    }
     void getData(){
         cout<<"Your complex number: "<<num1<<" + "<<num2<<" i"<<endl;
     }
@@ -32,5 +36,7 @@ int main(){
     cout<<"Summation of your second part: "<<addRealComplex(c1,c2)<<"i"<<endl;
     complex c3;
     c3.getData();
+    complex c4(3);//constructor overloading
+    c4.getData();
     return 0;
 }
