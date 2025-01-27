@@ -6,7 +6,11 @@ class complex{
     friend int addRealComplex(complex,complex);
     int num1,num2;
     public:
-    complex(int a,int b){
+    complex(void){//default constructor (accepts no parameter)
+        num1=0;
+        num2=0;
+    }
+    complex(int a,int b){//parameterized constructor (accepts parameter)
         num1=a;
         num2=b;
     }
@@ -26,5 +30,7 @@ int main(){
     c2.getData();
     cout<<"Summation of your first part: "<<addComplex(c1,c2)<<endl;
     cout<<"Summation of your second part: "<<addRealComplex(c1,c2)<<"i"<<endl;
+    complex c3;
+    c3.getData();
     return 0;
 }
