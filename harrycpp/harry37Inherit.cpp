@@ -2,9 +2,9 @@
 using namespace std;
 
 class employee{
-    int id;
     string type;
     public:
+    int id;
     employee(){
         id=34;
         cout<<"Enter your department: ";
@@ -12,22 +12,22 @@ class employee{
     }
     void show(){
         cout<<"Employee id: "<<id<<endl;
-        cout<<"Employee type"<<type<<endl;
+        cout<<"Employee type: "<<type<<endl;
     }
     ~employee(){}
 };
 
 class programmer:employee{
-    int pid;
+    //int pid;
     float salary;
     public:
     programmer(int id,int sal){
-        pid=id;
+        employee::id=id;
         salary=sal;
     }
     void show(){
         employee::show();
-        cout<<"Programmer id: "<<pid<<endl;
+        //cout<<"Programmer id: "<<pid<<endl;
         cout<<"Programmer salary: "<<salary<<endl;
     }
     ~programmer(){}
