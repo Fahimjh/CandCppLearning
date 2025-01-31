@@ -29,6 +29,33 @@ public:
         cout<<"Teachers department: "<<dept<<endl;
         cout<<"Teachers salary: "<<salary<<endl;
     }
+    ~Teacher(){}
+};
+
+class Student{
+public:
+    string name;
+    //float *cgptr;
+    float cgpa;
+    Student(string n, float cg){
+        name=n;
+        cgpa=cg;
+    }
+    // Student(string name,float cgpa){
+    //     this->name=name;
+    //     cgptr=new float;
+    //     *cgptr=cgpa;
+    // }
+    Student(Student &obj){
+        this->name=obj.name;
+        this->cgpa=obj.cgpa;
+    }
+    void getInfo(){
+        cout<<"Students name: "<<name<<endl;
+        //cout<<"Students cgpa: "<<*cgptr<<endl;
+        cout<<"Students cgpa: "<<cgpa<<endl;
+    }
+    ~Student(){}
 };
 /*
                         Encapsulation 
@@ -56,14 +83,27 @@ by constructor like a pointer passing values by reference
 in c++, conpiler automatically creates copy constructor 
 to ignore ambiguity and refer an object, we use "this->" operator to refer
 an object
-Copy constructor passes the exact same address of an object its occupying in a memory
-if we pass t1 into t2; then t2 and t1 will address the same address.
+Copy constructor passes the value of an object to another object like pass by value
+It's called shallow copy.
+There are another type of copy constructor. It's called deep copy.
+When we allocate memory dynamically, then sallow copy can't create memory 
+space individually.
+Then we need to create deep copy constructor on our own and it creates
+different memory allocation individually for dynamically allocated variable of each object.
 */
 
 int main(){
-    Teacher t1("Fahim","Software","SWE",25000);
-    //t1.getInfo();
-    Teacher t2(t1);
-    t2.getInfo();
+    // Teacher t1("Fahim","Software","SWE",25000);
+    // //t1.getInfo();
+    // Teacher t2(t1);
+    // t2.getInfo();
+    Student s1("Fahim",3.14);
+    Student s2(s1);
+    s1.getInfo();
+    s2.name="Amatullah";
+    //*(s2.cgptr)=4.00;
+    s2.cgpa=4.00;
+    s1.getInfo();
+    s2.getInfo();
     return 0;
 }
