@@ -35,25 +35,22 @@ public:
 class Student{
 public:
     string name;
-    //float *cgptr;
-    float cgpa;
-    Student(string n, float cg){
-        name=n;
-        cgpa=cg;
+    float *cgptr;
+    //float cgpa;
+    Student(string name,float cgpa){
+        this->name=name;
+        cgptr=new float;
+        *cgptr=cgpa;
     }
-    // Student(string name,float cgpa){
-    //     this->name=name;
-    //     cgptr=new float;
-    //     *cgptr=cgpa;
-    // }
     Student(Student &obj){
         this->name=obj.name;
-        this->cgpa=obj.cgpa;
+        cgptr=new float;
+        *cgptr=*obj.cgptr;
     }
     void getInfo(){
         cout<<"Students name: "<<name<<endl;
-        //cout<<"Students cgpa: "<<*cgptr<<endl;
-        cout<<"Students cgpa: "<<cgpa<<endl;
+        cout<<"Students cgpa: "<<*cgptr<<endl;
+        //cout<<"Students cgpa: "<<cgpa<<endl;
     }
     ~Student(){}
 };
@@ -90,6 +87,7 @@ When we allocate memory dynamically, then sallow copy can't create memory
 space individually.
 Then we need to create deep copy constructor on our own and it creates
 different memory allocation individually for dynamically allocated variable of each object.
+
 */
 
 int main(){
@@ -99,10 +97,10 @@ int main(){
     // t2.getInfo();
     Student s1("Fahim",3.14);
     Student s2(s1);
-    s1.getInfo();
+    //s1.getInfo();
     s2.name="Amatullah";
-    //*(s2.cgptr)=4.00;
-    s2.cgpa=4.00;
+    *(s2.cgptr)=4.00;
+    //s2.cgpa=4.00;
     s1.getInfo();
     s2.getInfo();
     return 0;
