@@ -15,6 +15,13 @@ public:
         dept=d;
         salary=sal;
     }
+    Teacher(Teacher &obj){
+        cout<<"Self made copy constructor\n";
+        this->name=obj.name;
+        this->dept=obj.dept;
+        this->subject=obj.subject;
+        this->salary=obj.salary;
+    }
     //getter
     void getInfo(){
         cout<<"Teachers name: "<<name<<endl;
@@ -41,12 +48,22 @@ Can't call it whenever we want, can only call at the time of creating object
 Has power to set the values of the attributes of objects
 If we don't create our constructor, then compiler automatically creates one and calls it at the time of creating object
 so it's better to learn and create our self made constructor
-must be in public section of the class otherwise compiler can't access it from main function
-
+must be in public section of the class otherwise compiler can't 
+access it from main function
+->Copy constructor is a special type constructor which passes the address of 
+an object into another object
+by constructor like a pointer passing values by reference
+in c++, conpiler automatically creates copy constructor 
+to ignore ambiguity and refer an object, we use "this->" operator to refer
+an object
+Copy constructor passes the exact same address of an object its occupying in a memory
+if we pass t1 into t2; then t2 and t1 will address the same address.
 */
 
 int main(){
     Teacher t1("Fahim","Software","SWE",25000);
-    t1.getInfo();
+    //t1.getInfo();
+    Teacher t2(t1);
+    t2.getInfo();
     return 0;
 }
