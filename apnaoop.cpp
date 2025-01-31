@@ -4,21 +4,23 @@ using namespace std;
 class Teacher{
 private:
     float salary;
-
+    string name,dept,subject;
 public:
-
     Teacher(){
         cout<<"Hello I am a non parameterized constructor\n";
     }
-    string name,dept,subject;
-
-    //setter
-    void setSalary(float sal){
+    Teacher(string n, string d, string sub, float sal){//Parameterized
+        name=n;
+        subject=sub;
+        dept=d;
         salary=sal;
     }
     //getter
-    void getSalary(){
-        cout<<""<<name<<" Teachers salary: "<<salary<<endl;
+    void getInfo(){
+        cout<<"Teachers name: "<<name<<endl;
+        cout<<"Teachers subject: "<<subject<<endl;
+        cout<<"Teachers department: "<<dept<<endl;
+        cout<<"Teachers salary: "<<salary<<endl;
     }
 };
 /*
@@ -40,13 +42,11 @@ Has power to set the values of the attributes of objects
 If we don't create our constructor, then compiler automatically creates one and calls it at the time of creating object
 so it's better to learn and create our self made constructor
 must be in public section of the class otherwise compiler can't access it from main function
+
 */
 
 int main(){
-    Teacher t1;
-    t1.name="Fahim";
-    t1.dept="Software";
-    t1.setSalary(25000);
-    t1.getSalary();
+    Teacher t1("Fahim","Software","SWE",25000);
+    t1.getInfo();
     return 0;
 }
