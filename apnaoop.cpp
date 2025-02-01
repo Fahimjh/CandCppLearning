@@ -9,6 +9,10 @@ public:
     Person(){
         cout<<"Hello I am person's constructor\n";
     }
+    Person(string n, int a){
+        this->name=n;
+        this->age=a;
+    }
     ~Person(){
         cout<<"Hello I am person's destructor\n";
     }
@@ -19,6 +23,9 @@ public:
     float cgpa;
     Student(){
         cout<<"Hello I am student's constructor\n";
+    }
+    Student(string n, int a, float cg):Person(n,a){
+        this->cgpa=cg;
     }
     void getInfo(){
         cout<<"Name= "<<name<<endl;
@@ -91,14 +98,17 @@ is child/derived class.
 At the time of inheritance, constructor of base class gets called before and 
 Child gets later and in the time of destructor, child gets called before and
 base after.
-
+Parameterized constructor doesn't get called autmatically, we need to call it
+on our own. In inheritance, we can call it from child class's constructor
+calling it from the child's cnstructor, we need to pass the exact 
+same parameters which we've declared inside the constructor creation.
 */
 
 int main(){
-    Student s1;
-    s1.name="Jamil hasan Fahim";
-    s1.age=25;
-    s1.cgpa=3.14;
+    Student s1("Jamil hasan fahim",25,3.14);
+    // s1.name="Jamil hasan Fahim";
+    // s1.age=25;
+    // s1.cgpa=3.14;
     s1.getInfo();
     return 0;
 }
