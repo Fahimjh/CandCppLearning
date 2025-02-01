@@ -1,64 +1,36 @@
 #include<iostream>
 using namespace std;
 
-class Teacher{
-private:
-    float salary;
-    string name,dept,subject;
-public:
-    Teacher(){
-        cout<<"Hello I am a non parameterized constructor\n";
-    }
-    Teacher(string n, string d, string sub, float sal){//Parameterized
-        name=n;
-        subject=sub;
-        dept=d;
-        salary=sal;
-    }
-    Teacher(Teacher &obj){
-        cout<<"Self made copy constructor\n";
-        this->name=obj.name;
-        this->dept=obj.dept;
-        this->subject=obj.subject;
-        this->salary=obj.salary;
-    }
-    //getter
-    void getInfo(){
-        cout<<"Teachers name: "<<name<<endl;
-        cout<<"Teachers subject: "<<subject<<endl;
-        cout<<"Teachers department: "<<dept<<endl;
-        cout<<"Teachers salary: "<<salary<<endl;
-    }
-    ~Teacher(){}
-};
+class Person{
 
-class Student{
 public:
     string name;
-    float *cgptr;
-    //float cgpa;
-    Student(string name,float cgpa){
-        this->name=name;
-        cgptr=new float;
-        *cgptr=cgpa;
+    int age;
+    Person(){
+        cout<<"Hello I am person's constructor\n";
     }
-    Student(Student &obj){
-        this->name=obj.name;
-        cgptr=new float;
-        *cgptr=*obj.cgptr;
+    ~Person(){
+        cout<<"Hello I am person's destructor\n";
+    }
+};
+
+class Student: public Person{
+public:
+    float cgpa;
+    Student(){
+        cout<<"Hello I am student's constructor\n";
     }
     void getInfo(){
-        cout<<"Students name: "<<name<<endl;
-        cout<<"Students cgpa: "<<*cgptr<<endl;
-        //cout<<"Students cgpa: "<<cgpa<<endl;
+        cout<<"Name= "<<name<<endl;
+        cout<<"Age= "<<age<<endl;
+        cout<<"Cgpa= "<<cgpa<<endl;
     }
     ~Student(){
-        delete cgptr;
-        cout<<"Hello i am a destructor\n";
+        cout<<"Hello I am student's destructor\n";
     }
 };
 /*
-                        Encapsulation 
+                            Encapsulation 
 means wrapping up attributes and members in a single unit
 eg-> declaring an object with attributes and member functions inside a class;
 Encapsulation helps in data hiding through access modifiers
@@ -67,7 +39,7 @@ private-> can't access from outside of that member/class;
 protected-> limited access from outside of that member/class;
 public->full access from outside of that class
                     
-                        Constructor
+                            Constructor
 A special type function having name as same with class
 Three types of constructor->Parameterized, non parameterized, copy;
 Gets automatically called when object is created
@@ -91,7 +63,7 @@ space individually.
 Then we need to create deep copy constructor on our own and it creates
 different memory allocation individually for dynamically allocated variable of each object.
 
-                        Destructor
+                            Destructor
 Destructor is a special type of function like constructor
 DIfference is constructor is for allocating memory and destructor is for
 deleting memory
@@ -105,20 +77,28 @@ mically allocated memory.
 As we use "new" keyword to allocate memory dynamically, we use "delete" keyword
 to release that allocated memory and we should do it in our destructor if
 we allocate it in constructor. So we should have our own destructor.
+                        
+                            Inheritance
+Oop is a part of real world scenario and Sometimes we need to use the attributes
+and member functions of an object to another object.
+If we create another class with same attributes and functions then it takes
+more time and a very bad practice
+oop has a very good tool for that which is inheritance. we can inherit one class
+to another and by that we can use all the attributes and functions of that
+class without writing that again and again
+The class we inherits to another class is called parent/base class and other
+is child/derived class.
+At the time of inheritance, constructor of base class gets called before and 
+Child gets later and in the time of destructor, child gets called before and
+base after.
+
 */
 
 int main(){
-    // Teacher t1("Fahim","Software","SWE",25000);
-    // //t1.getInfo();
-    // Teacher t2(t1);
-    // t2.getInfo();
-    Student s1("Fahim",3.14);
-    Student s2(s1);
-    //s1.getInfo();
-    s2.name="Amatullah";
-    *(s2.cgptr)=4.00;
-    //s2.cgpa=4.00;
+    Student s1;
+    s1.name="Jamil hasan Fahim";
+    s1.age=25;
+    s1.cgpa=3.14;
     s1.getInfo();
-    s2.getInfo();
     return 0;
 }
