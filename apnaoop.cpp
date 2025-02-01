@@ -9,10 +9,7 @@ public:
     Person(){
         cout<<"Hello I am person's constructor\n";
     }
-    Person(string n, int a){
-        this->name=n;
-        this->age=a;
-    }
+    
     ~Person(){
         cout<<"Hello I am person's destructor\n";
     }
@@ -24,16 +21,18 @@ public:
     Student(){
         cout<<"Hello I am student's constructor\n";
     }
-    Student(string n, int a, float cg):Person(n,a){
-        this->cgpa=cg;
-    }
-    void getInfo(){
-        cout<<"Name= "<<name<<endl;
-        cout<<"Age= "<<age<<endl;
-        cout<<"Cgpa= "<<cgpa<<endl;
-    }
     ~Student(){
         cout<<"Hello I am student's destructor\n";
+    }
+};
+class GradStd: public Student{
+public:
+    string gradsub;
+    GradStd(){
+        cout<<"Hello I am graduate student's constructor\n";
+    }
+    ~GradStd(){
+        cout<<"Hello I am graduate student's destructor\n";
     }
 };
 /*
@@ -102,13 +101,32 @@ Parameterized constructor doesn't get called autmatically, we need to call it
 on our own. In inheritance, we can call it from child class's constructor
 calling it from the child's cnstructor, we need to pass the exact 
 same parameters which we've declared inside the constructor creation.
+there are 4 types of inheritance. single, multiple, multilevel, hierarchycal.
+In single, there's only one parent and child class.
+in multilevel, there are two/three stages of inheritance one comes
+from another
 */
 
 int main(){
-    Student s1("Jamil hasan fahim",25,3.14);
-    // s1.name="Jamil hasan Fahim";
-    // s1.age=25;
-    // s1.cgpa=3.14;
-    s1.getInfo();
+    // Student s1("Jamil hasan fahim",25,3.14);
+    // // s1.name="Jamil hasan Fahim";
+    // // s1.age=25;
+    // // s1.cgpa=3.14;
+    // s1.getInfo();
+    GradStd gs;
+    cout<<"Enter graduate students name: "<<endl;
+    getline(cin,gs.name);
+    cout<<"Enter graduate students age: "<<endl;
+    cin>>gs.age;
+    cout<<"Enter graduate students cgpa: "<<endl;
+    cin>>gs.cgpa;
+    cin.ignore();
+    cout<<"Enter graduate students subjects name: "<<endl;
+    getline(cin,gs.gradsub);
+    cout<<gs.name<<endl;
+    cout<<gs.age<<endl;
+    cout<<gs.cgpa<<endl;
+    cout<<gs.gradsub<<endl;
+
     return 0;
 }
