@@ -52,7 +52,10 @@ public:
         cout<<"Students cgpa: "<<*cgptr<<endl;
         //cout<<"Students cgpa: "<<cgpa<<endl;
     }
-    ~Student(){}
+    ~Student(){
+        delete cgptr;
+        cout<<"Hello i am a destructor\n";
+    }
 };
 /*
                         Encapsulation 
@@ -88,6 +91,20 @@ space individually.
 Then we need to create deep copy constructor on our own and it creates
 different memory allocation individually for dynamically allocated variable of each object.
 
+                        Destructor
+Destructor is a special type of function like constructor
+DIfference is constructor is for allocating memory and destructor is for
+deleting memory
+Compiler also creates selft made destructor and it also gets called by compiler
+itself automatically like constructor
+After execution of main function, when compiler understands that this object
+has no use then it creates a destructor to free the space and calls it.
+But, for dynamically allocated memory (deep copy constructor), we need to
+create destructor on our own cause compiler's Destructor can't delete dyna
+mically allocated memory.
+As we use "new" keyword to allocate memory dynamically, we use "delete" keyword
+to release that allocated memory and we should do it in our destructor if
+we allocate it in constructor. So we should have our own destructor.
 */
 
 int main(){
