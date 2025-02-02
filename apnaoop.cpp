@@ -1,19 +1,29 @@
 #include<iostream>
 using namespace std;
-
-class Student{
+class Person{
 public:
-    float cgpa;
     string name;
+    int age;
+};
+
+class Student: public Person{
+public:
+    int roll;
     Student(){
         cout<<"Hello I am student's constructor\n";
     }
     ~Student(){
         cout<<"Hello I am student's destructor\n";
     }
+    void getInfo(){
+        cout<<name<<endl;
+        cout<<age<<endl;
+        cout<<roll<<endl;
+        //cout<<salary<<endl;
+    }
 };
 
-class Teacher{
+class Teacher: public Person{
 public:
     string subject;
     Teacher(){
@@ -22,24 +32,14 @@ public:
     ~Teacher(){
         cout<<"Hello I am graduate student's destructor\n";
     }
-};
-
-class TA: public Student, public Teacher{
-    public:
-    int salary;
-    TA(string n, string s, int sal, float cg){
-        this->name=n;
-        this->subject=s;
-        this->salary=sal;
-        this->cgpa=cg;
-    }
     void getInfo(){
         cout<<name<<endl;
+        cout<<age<<endl;
         cout<<subject<<endl;
-        cout<<cgpa<<endl;
-        cout<<salary<<endl;
+        //cout<<salary<<endl;
     }
 };
+
 /*
                             Encapsulation 
 means wrapping up attributes and members in a single unit
@@ -112,6 +112,8 @@ in multilevel, there are two/three stages of inheritance one comes
 from another.
 In multiple inheritance, there are two parent and one child class. that child 
 class inherits both parent class's property
+In hierarchycal inheritance, there are two child class from one parent class 
+there may arrive multiple and multilevel inheritance also
 */
 
 int main(){
@@ -120,8 +122,15 @@ int main(){
     // // s1.age=25;
     // // s1.cgpa=3.14;
     // s1.getInfo();
-    TA t1("Jamil Hasan Fahim","Software",25000,3.14);
+    Student s1;
+    s1.name="Jamil Hasan Fahim";
+    s1.age=25;
+    s1.roll=688;
+    s1.getInfo();
+    Teacher t1;
+    t1.name="Jamil Hasan Fahim";
+    t1.age=25;
+    t1.subject="Software";
     t1.getInfo();
-
     return 0;
 }
