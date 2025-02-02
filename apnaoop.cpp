@@ -6,7 +6,7 @@ public:
     int age;
 };
 
-class Student: public Person{
+class Student: virtual public Person{
 public:
     int roll;
     Student(){
@@ -23,7 +23,7 @@ public:
     }
 };
 
-class Teacher: public Person{
+class Teacher: virtual public Person{
 public:
     string subject;
     Teacher(){
@@ -32,14 +32,26 @@ public:
     ~Teacher(){
         cout<<"Hello I am graduate student's destructor\n";
     }
+};
+
+class TA:public Student, public Teacher{
+public:
+    int salary;
+    TA(string n, string sub, int a, int r, int sal){
+        this->name=n;
+        this->subject=sub;
+        this->age=a;
+        this->roll=r;
+        this->salary=sal;
+    }
     void getInfo(){
         cout<<name<<endl;
         cout<<age<<endl;
         cout<<subject<<endl;
-        //cout<<salary<<endl;
+        cout<<roll<<endl;
+        cout<<salary<<endl;
     }
 };
-
 /*
                             Encapsulation 
 means wrapping up attributes and members in a single unit
@@ -106,14 +118,15 @@ Parameterized constructor doesn't get called autmatically, we need to call it
 on our own. In inheritance, we can call it from child class's constructor
 calling it from the child's cnstructor, we need to pass the exact 
 same parameters which we've declared inside the constructor creation.
-there are 4 types of inheritance. single, multiple, multilevel, hierarchycal.
+there are 5 types of inheritance. single, multiple, multilevel, 
+hierarchycal and hybrid.
 In single, there's only one parent and child class.
 in multilevel, there are two/three stages of inheritance one comes
 from another.
 In multiple inheritance, there are two parent and one child class. that child 
 class inherits both parent class's property
 In hierarchycal inheritance, there are two child class from one parent class 
-there may arrive multiple and multilevel inheritance also
+in hybrid, multiple and multilevel inheritance combines.
 */
 
 int main(){
@@ -122,15 +135,7 @@ int main(){
     // // s1.age=25;
     // // s1.cgpa=3.14;
     // s1.getInfo();
-    Student s1;
-    s1.name="Jamil Hasan Fahim";
-    s1.age=25;
-    s1.roll=688;
-    s1.getInfo();
-    Teacher t1;
-    t1.name="Jamil Hasan Fahim";
-    t1.age=25;
-    t1.subject="Software";
+    TA t1("Jamil Hasan Fahim","Software",25,688,25000);
     t1.getInfo();
     return 0;
 }
