@@ -1,63 +1,76 @@
 #include<iostream>
 using namespace std;
-class Person{
-public:
-    string name;
-    int age;
-     void getInfo(){
-        cout<<name<<endl;
-        cout<<age<<endl;
-        //cout<<roll<<endl;
-        //cout<<salary<<endl;
-    }
+
+class Shape{//class becomes abstract
+    virtual void draw()=0;//making it pure virtual function
 };
 
-class Student: virtual public Person{
+class Rectangle: public Shape{
 public:
-    int roll;
-    Student(){
-        cout<<"Hello I am student's constructor\n";
-    }
-    ~Student(){
-        cout<<"Hello I am student's destructor\n";
-    }
-    void getInfo(){
-        cout<<name<<endl;
-        cout<<age<<endl;
-        cout<<roll<<endl;
-        //cout<<salary<<endl;
+    void draw(){
+        cout<<"Hello I am rectangle"<<endl;
     }
 };
+//now we can only inherit this class. Cant create any objects using this class
 
-class Teacher: virtual public Person{
-public:
-    string subject;
-    Teacher(){
-        cout<<"Hello I am graduate student's constructor\n";
-    }
-    ~Teacher(){
-        cout<<"Hello I am graduate student's destructor\n";
-    }
-};
+// class Person{
+// public:
+//     string name;
+//     int age;
+//      void getInfo(){
+//         cout<<name<<endl;
+//         cout<<age<<endl;
+//         //cout<<roll<<endl;
+//         //cout<<salary<<endl;
+//     }
+// };
 
-class TA:public Student, public Teacher{
-public:
-    int salary;
-    TA(string n, string sub, int a, int r, int sal){
-        this->name=n;
-        this->subject=sub;
-        this->age=a;
-        this->roll=r;
-        this->salary=sal;
-    }
-    void getInfo(){
-        cout<<name<<endl;
-        cout<<age<<endl;
-        cout<<subject<<endl;
-        cout<<roll<<endl;
-        cout<<salary<<endl;
-    }
-};
+// class Student: virtual public Person{
+// public:
+//     int roll;
+//     Student(){
+//         cout<<"Hello I am student's constructor\n";
+//     }
+//     ~Student(){
+//         cout<<"Hello I am student's destructor\n";
+//     }
+//     void getInfo(){
+//         cout<<name<<endl;
+//         cout<<age<<endl;
+//         cout<<roll<<endl;
+//         //cout<<salary<<endl;
+//     }
+// };
+
+// class Teacher: virtual public Person{
+// public:
+//     string subject;
+//     Teacher(){
+//         cout<<"Hello I am graduate student's constructor\n";
+//     }
+//     ~Teacher(){
+//         cout<<"Hello I am graduate student's destructor\n";
+//     }
+// };
+
+// class TA:public Student, public Teacher{
+// public:
+//     int salary;
+//     TA(string n, string sub, int a, int r, int sal){
+//         this->name=n;
+//         this->subject=sub;
+//         this->age=a;
+//         this->roll=r;
+//         this->salary=sal;
+//     }
+//     void getInfo(){
+//         cout<<name<<endl;
+//         cout<<age<<endl;
+//         cout<<subject<<endl;
+//         cout<<roll<<endl;
+//         cout<<salary<<endl;
+//     }
+// };
 /*
                             Encapsulation 
 means wrapping up attributes and members in a single unit
@@ -132,7 +145,10 @@ from another.
 In multiple inheritance, there are two parent and one child class. that child 
 class inherits both parent class's property
 In hierarchycal inheritance, there are two child class from one parent class 
-in hybrid, multiple and multilevel inheritance combines.
+in hybrid, multiple and multilevel inheritance combines. To avoid ambiguity
+in these type of inheritance, we use "virtual" keyword before a class.
+This type of class and their member/attributes inherited only once and we
+don't face ambiguity
                             
                             Polymorphism
 It means multi variants with same name. There are 2 types of polymorphism
@@ -144,13 +160,26 @@ constructors or functions with same name. Which one to use would get decided
 at the time of creating object and compiling
 
 When we talk about Run time polymorphism, we need to think about function 
-inheritance. WHen there are same functions in both parent and child class,
+inheritance. When there are same functions in both parent and child class,
 Then at the run time, it gets decided that which function should get called
 Normally child classes functions gets more priority than parent class if
 the object is from child class. In other cases, it gets decided depending 
 user input
 When we use virtual keyword before a function, then these type of 
 functions are always the example of runtime polymorphism
+                            
+                            Abstraction
+Abstraction means hiding data and showing important variables/functions.
+We have already covered 90% of abstractions by using our access modifiers
+We used private access modifiers to hide our data and use protected/public 
+access modifiers to show our data.
+There are other type of abstraction. That's making abstract class. This type of classes can only use as a blueprinted class 
+for other class and can be inherited. They can't be instanciated. Means
+we can't create object from that class. We use "virtual" keyword and declare 
+its value =0 to make it a pure virtual function. There could be normal function
+too. But if there are a single pure vitual function, then the class becomes
+abstract class.
+
 */
 
 int main(){
@@ -159,7 +188,9 @@ int main(){
     // // s1.age=25;
     // // s1.cgpa=3.14;
     // s1.getInfo();
-    TA t1("Jamil Hasan Fahim","Software",25,688,25000);
-    t1.getInfo();
+    // TA t1("Jamil Hasan Fahim","Software",25,688,25000);
+    // t1.getInfo();
+    Rectangle r1;
+    r1.draw();
     return 0;
 }
