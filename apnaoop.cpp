@@ -4,6 +4,12 @@ class Person{
 public:
     string name;
     int age;
+     void getInfo(){
+        cout<<name<<endl;
+        cout<<age<<endl;
+        //cout<<roll<<endl;
+        //cout<<salary<<endl;
+    }
 };
 
 class Student: virtual public Person{
@@ -127,6 +133,24 @@ In multiple inheritance, there are two parent and one child class. that child
 class inherits both parent class's property
 In hierarchycal inheritance, there are two child class from one parent class 
 in hybrid, multiple and multilevel inheritance combines.
+                            
+                            Polymorphism
+It means multi variants with same name. There are 2 types of polymorphism
+Compile time/static and run-time/dynamic polymorphism
+Compile time polymorphism includes constructor overriding and function 
+overriding
+constructor/function overriding means in one class, there are two/three 
+constructors or functions with same name. Which one to use would get decided 
+at the time of creating object and compiling
+
+When we talk about Run time polymorphism, we need to think about function 
+inheritance. WHen there are same functions in both parent and child class,
+Then at the run time, it gets decided that which function should get called
+Normally child classes functions gets more priority than parent class if
+the object is from child class. In other cases, it gets decided depending 
+user input
+
+
 */
 
 int main(){
