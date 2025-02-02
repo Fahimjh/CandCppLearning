@@ -1,16 +1,26 @@
 #include<iostream>
 using namespace std;
 
-class Shape{//class becomes abstract
-    virtual void draw()=0;//making it pure virtual function
-};
-
-class Rectangle: public Shape{
-public:
-    void draw(){
-        cout<<"Hello I am rectangle"<<endl;
+class Shape{
+    public:
+    Shape(){
+        cout<<"Constructor"<<endl;
+    }
+    ~Shape(){
+        cout<<"Destructor"<<endl;
     }
 };
+
+// class Shape{//class becomes abstract
+//     virtual void draw()=0;//making it pure virtual function
+// };
+
+// class Rectangle: public Shape{
+// public:
+//     void draw(){
+//         cout<<"Hello I am rectangle"<<endl;
+//     }
+// };
 //now we can only inherit this class. Cant create any objects using this class
 
 // class Person{
@@ -179,6 +189,15 @@ we can't create object from that class. We use "virtual" keyword and declare
 its value =0 to make it a pure virtual function. There could be normal function
 too. But if there are a single pure vitual function, then the class becomes
 abstract class.
+                            Static
+Static is a keyword for increasing lifetime. Usually when we create a 
+variable in a function, then the lifetime of that variable is ends with that 
+function. But when we add 'static' keyword with that variable, then the variable
+stays before ending the program.
+If we use static keyword before a variable and then create some class or 
+inherits, then all the classes/objects shares the same variable. It doesn't
+create different variaable for all the objects.
+Then comes static object. This tpe of objects also stays till ending the program
 
 */
 
@@ -190,7 +209,11 @@ int main(){
     // s1.getInfo();
     // TA t1("Jamil Hasan Fahim","Software",25,688,25000);
     // t1.getInfo();
-    Rectangle r1;
-    r1.draw();
+    // Rectangle r1;
+    // r1.draw();
+    if(true){
+        static Shape s1;
+    }
+    cout<<"End of main Function"<<endl;
     return 0;
 }
