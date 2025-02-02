@@ -1,23 +1,10 @@
 #include<iostream>
 using namespace std;
 
-class Person{
-
-public:
-    string name;
-    int age;
-    Person(){
-        cout<<"Hello I am person's constructor\n";
-    }
-    
-    ~Person(){
-        cout<<"Hello I am person's destructor\n";
-    }
-};
-
-class Student: public Person{
+class Student{
 public:
     float cgpa;
+    string name;
     Student(){
         cout<<"Hello I am student's constructor\n";
     }
@@ -25,14 +12,32 @@ public:
         cout<<"Hello I am student's destructor\n";
     }
 };
-class GradStd: public Student{
+
+class Teacher{
 public:
-    string gradsub;
-    GradStd(){
+    string subject;
+    Teacher(){
         cout<<"Hello I am graduate student's constructor\n";
     }
-    ~GradStd(){
+    ~Teacher(){
         cout<<"Hello I am graduate student's destructor\n";
+    }
+};
+
+class TA: public Student, public Teacher{
+    public:
+    int salary;
+    TA(string n, string s, int sal, float cg){
+        this->name=n;
+        this->subject=s;
+        this->salary=sal;
+        this->cgpa=cg;
+    }
+    void getInfo(){
+        cout<<name<<endl;
+        cout<<subject<<endl;
+        cout<<cgpa<<endl;
+        cout<<salary<<endl;
     }
 };
 /*
@@ -104,7 +109,9 @@ same parameters which we've declared inside the constructor creation.
 there are 4 types of inheritance. single, multiple, multilevel, hierarchycal.
 In single, there's only one parent and child class.
 in multilevel, there are two/three stages of inheritance one comes
-from another
+from another.
+In multiple inheritance, there are two parent and one child class. that child 
+class inherits both parent class's property
 */
 
 int main(){
@@ -113,20 +120,8 @@ int main(){
     // // s1.age=25;
     // // s1.cgpa=3.14;
     // s1.getInfo();
-    GradStd gs;
-    cout<<"Enter graduate students name: "<<endl;
-    getline(cin,gs.name);
-    cout<<"Enter graduate students age: "<<endl;
-    cin>>gs.age;
-    cout<<"Enter graduate students cgpa: "<<endl;
-    cin>>gs.cgpa;
-    cin.ignore();
-    cout<<"Enter graduate students subjects name: "<<endl;
-    getline(cin,gs.gradsub);
-    cout<<gs.name<<endl;
-    cout<<gs.age<<endl;
-    cout<<gs.cgpa<<endl;
-    cout<<gs.gradsub<<endl;
+    TA t1("Jamil Hasan Fahim","Software",25000,3.14);
+    t1.getInfo();
 
     return 0;
 }
