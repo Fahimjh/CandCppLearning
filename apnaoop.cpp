@@ -149,8 +149,8 @@ Then at the run time, it gets decided that which function should get called
 Normally child classes functions gets more priority than parent class if
 the object is from child class. In other cases, it gets decided depending 
 user input
-
-
+When we use virtual keyword before a function, then these type of 
+functions are always the example of runtime polymorphism
 */
 
 int main(){
