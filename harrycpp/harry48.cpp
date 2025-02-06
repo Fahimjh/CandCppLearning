@@ -1,7 +1,17 @@
 #include<iostream>
 using namespace std;
-
-class base1{
+class parent{
+    //string name;
+    public:
+    parent(){
+        //name=n;
+        cout<<"This is parent class: "<<endl;
+    }
+    void show(){
+        cout<<"Hello I am parent\n";
+    }
+};
+class base1:virtual public parent{
     int data1;
     public:
     base1(int a){
@@ -10,7 +20,7 @@ class base1{
     }
 };
 
-class base2{
+class base2:virtual public parent{
     int data2;
     public:
     base2(int a){
@@ -29,5 +39,6 @@ class derived: public base1, public base2{
 
 int main(){
     derived d(1,2,3);
+    d.show();
     return 0;
 }
