@@ -18,4 +18,5 @@ int binomialCoefficient(int n, int r){
 int main(){
     cout<<binomialCoefficient(8,2)<<endl;
     cout<<binomialCoefficient(6,3)<<endl;
+    return 0;
 }
