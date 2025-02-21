@@ -7,20 +7,21 @@ int main(){
     cout<<"Enter number: ";
     cin>>n;
     while(1){
-        if(n/2==1){
-            count==0;
+        if(n==2){
+            count=0;
             break;
         }
         else if(n%2!=0){
-            //cout<<"else if n%2="<<n%2<<endl;
             count++;
             break;
         }
-        n=n/2;
+        n=n>>1;
     }
-    if(count==0){
-        cout<<"True";
+    if(count!=0){
+        cout<<"false"<<endl;
     }
     else
-        cout<<"False";
+    cout<<"True"<<endl;
+    //cout<<(n>>1)<<endl;
+    
 }
