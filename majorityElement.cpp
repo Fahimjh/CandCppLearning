@@ -22,5 +22,20 @@ int majorityElement(vector<int>vec){
 
 int main(){
     vector<int>vec={1,1,2,2,2};
-    cout<<majorityElement(vec)<<endl;
+    int arr[5]={1,1,1,2,2},i=0,j=1;
+    int count=1,val;
+    for(i=1;i<=4;i++){
+        if(arr[i]==arr[i-1]){
+            count++;
+            if(count>5/2){
+                val=arr[i];
+                break;
+            }
+        }
+        else{
+            count=1;
+        }
+    }
+    cout<<"from array: "<<val<<endl;
+    cout<<"from vector: "<<majorityElement(vec)<<endl;
 }
