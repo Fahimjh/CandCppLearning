@@ -4,7 +4,6 @@ using namespace std;
 
 int majorityElement(vector<int>vec){
     int count=0,maxCount=0,val;
-    
     for(int i=0;i<vec.size()-1;i++){
         count=0;
         for(int j=i+1;j<vec.size();j++){
@@ -21,7 +20,7 @@ int majorityElement(vector<int>vec){
 }
 
 int main(){
-    vector<int>vec={1,1,2,2,2};
+    vector<int>vec={1,2,1,2,2};
     int arr[5]={1,1,1,2,2},i=0,j=1;
     int count=1,val;
     for(i=1;i<=4;i++){
