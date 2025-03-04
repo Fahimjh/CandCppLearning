@@ -19,19 +19,19 @@ int main(){
     //     }
     //     cout<<endl;
     // }
-    for(int i=0;i<vec.size();i++){
-        sum=0;
-        for(int j=0;j<=i;j++){
-            cout<<vec[j]<<" ";
-            sum=sum+vec[j];
-        }
-        maxSum=max(maxSum,sum);
-        cout<<endl;
-    }
     // for(int i=0;i<vec.size();i++){
-    //     if(sum<0)sum=0;
-    //     sum=sum+vec[i];
+    //     sum=0;
+    //     for(int j=0;j<=i;j++){
+    //         cout<<vec[j]<<" ";
+    //         sum=sum+vec[j];
+    //     }
     //     maxSum=max(maxSum,sum);
+    //     cout<<endl;
     // }
+    for(int i=0;i<vec.size();i++){
+        if(sum<0)sum=0;
+        sum=sum+vec[i];
+        maxSum=max(maxSum,sum);
+    }
     cout<<maxSum<<endl;
 }
