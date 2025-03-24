@@ -3,14 +3,22 @@
 using namespace std;
 
 int main(){
-    vector<int>container={1,1};
-    int maxArea=0;
-    for(int i=0;i<container.size()-1;i++){
-        for(int j=i+1;j<container.size();j++){
-            maxArea=max((min(container[i],container[j])*(j-i)),maxArea);
-            cout<<"current: "<<min(container[i],container[j])*(j-i)<<" max: ";
-            cout<<maxArea<<endl;
+    vector<int>height={8,7,2,1};
+    int maxWater=0,curWater,i=0,j=height.size()-1,width;
+    while(i<j){
+        cout<<"i: "<<i<<endl;
+        cout<<"j: "<<j<<endl;
+        width=j-i;
+        cout<<"width: "<<width<<endl;
+        curWater=min(height[i],height[j])*width;
+        cout<<"currwater: "<<curWater<<endl;
+        maxWater=max(curWater,maxWater);
+        cout<<"maxwater: "<<maxWater<<endl;
+        if(height[i]<height[j]){
+            i++;
         }
-        cout<<i<<" th loop"<<endl;
+        else j--;
+        
     }
+    cout<< maxWater;
 }
