@@ -25,8 +25,8 @@ int main(){
             else
                 start=mid+1;
         }
-        else
-            break;
+        // else
+        //     break;
     }
     if(target==vec[mid]){
         cout<<"Found"<<endl;
