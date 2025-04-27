@@ -20,8 +20,9 @@ bool isValid(vector<int>&vec,int m, int mid){
                 return false;
             }
         }
-        if(painter==m&&i<vec.size()&&paint<=mid)
-        val=true;
+        if(painter<=m&&i<vec.size()&&paint<=mid){
+            val=true;
+        }
     }
     return val;
 }
@@ -33,7 +34,7 @@ int paintersPart(vector<int>&vec,int m){
     }
     end=total;
     while(st<=end){
-        mid=st+(end-st)/2;
+        mid=st+(end-st)/m;
         cout<<"mid: "<<mid<<endl;
         if(isValid(vec,m,mid)){
             end=mid-1;
@@ -48,8 +49,8 @@ int paintersPart(vector<int>&vec,int m){
 }
 
 int main(){
-    vector<int>vec={40,30,10,20};
-    int m=2;
+    vector<int>vec={35,10,20,30,40,50};
+    int m=3;
     cout<<paintersPart(vec,m);
     return 0;
 }
