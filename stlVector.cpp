@@ -3,18 +3,15 @@
 using namespace std;
 
 int main(){
-    vector<int>vec={1,2,3,6,7,8,9,4,5};
-    cout<<"Vector size: "<<vec.size()<<endl;
-    cout<<"Vector capacity: "<<vec.capacity()<<endl;
-    vec.erase(vec.begin()+3,vec.end()-2);
-    cout<<"Vector size: "<<vec.size()<<endl;
-    cout<<"Vector capacity: "<<vec.capacity()<<endl;
-    cout<<"Vector isEmpty: "<<vec.empty()<<endl;
-    for(int i=0;i<vec.size();i++){
-        cout<<vec[i]<<endl;
+    vector<int>vec={1,2,3,4,5};
+    vector<int>::iterator it;
+    cout<<"forword:"<<endl;
+    for(it=vec.begin(); it!=vec.end(); it++){
+        cout<<*(it)<<endl;
     }
-    vec.clear();
-    cout<<"Vector size: "<<vec.size()<<endl;
-    cout<<"Vector capacity: "<<vec.capacity()<<endl;
-    cout<<"Vector isEmpty: "<<vec.empty()<<endl;
+    cout<<"backword:"<<endl;
+    vector<int>::reverse_iterator rit;
+    for(rit=vec.rbegin(); rit!=vec.rend(); rit++){
+        cout<<*(rit)<<endl;
+    }
 }
