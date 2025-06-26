@@ -49,6 +49,7 @@
         "optional": "cpp",
         "string_view": "cpp",
         "numbers": "cpp",
-        "list": "cpp"
+        "list": "cpp",
+        "map": "cpp"
     }
 }
