@@ -7,25 +7,28 @@ struct node{
 };
 
 int main(){
-    node *head;
-    node* node1=new node();
-    node* node2=new node();
-    node* node3=new node();
+    node *head=nullptr, *tail=nullptr;
+    char choice='y';
+    while(choice=='y'||choice=='Y'){
+        cout<<"Press value to add data in the list: ";
+        node *temp=new node();
+        cin>>temp->data;
+        temp->nextPtr=nullptr;
+        cout<<"Want to add value in the list? pres y/Y to continue: ";
+        cin>>choice;
+        if(head==nullptr){
+            head=temp;
+            tail=temp;
+        }
+        else{
+            tail->nextPtr=temp;
+            tail=temp;
+        }
+    }
 
-    head=node1;
-    node1->data=05;
-    node1->nextPtr=node2;
-    node2->data=10;
-    node2->nextPtr=node3;
-    node3->data=15;
-    node3->nextPtr=nullptr;
-    cout<<"head address: "<<head<<endl;
-    
     while(head!=nullptr){
         cout<<head->data<<" -> "<<head->nextPtr<<endl;
         head=head->nextPtr;
     }
-    cout<<"node1 address: "<<node1->nextPtr<<endl;
-    cout<<"node2 address: "<<node2->nextPtr<<endl;
-    cout<<"node3 address: "<<node3->nextPtr<<endl;
+    
 }
