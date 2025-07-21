@@ -10,10 +10,14 @@ struct node{
 int main(){
     node *head=nullptr, *tail;
     char choice='y';
+    
     while(choice=='y'||choice=='Y'){
         cout<<"Enter name: ";
-        node *temp=new node();
-        cin.ignore();
+        
+        node *temp = new node();
+        temp->nextPtr = nullptr;
+        temp->prevPtr = nullptr;
+
         getline(cin,temp->name);
         if(head==nullptr){
             head=temp;
@@ -24,14 +28,18 @@ int main(){
             tail->nextPtr=temp;
             tail=temp;
         }
+        
         cout<<"Do you want to enter more names? press y/Y to continue: ";
         cin>>choice;
+        cin.ignore();
     }
+
     tail->nextPtr=head;
     head->prevPtr=tail;
 
     cout<<head->prevPtr<<" <- "<<head->name<<" = "<<head<<" -> "<<head->nextPtr<<endl;
     node *current=head->nextPtr;
+    
     while(current!=head){
         cout<<current->prevPtr<<" <- "<<current->name<<" = "<<current<<" -> "<<current->nextPtr<<endl;
         current=current->nextPtr;
