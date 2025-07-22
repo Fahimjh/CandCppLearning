@@ -41,28 +41,22 @@ int main()
     
     cout << "Enter position for insertion: ";
     cin >> pos;
-    while (1){
-        if (pos >= length+2 || pos < 1){
-            cout << "Position invalid. Enter again: ";
-            cin >> pos;
-        }
-        else{
-            break;
-        }
-    }
-    
-    if(pos==1){
+        
+    if(pos==1){//insertion at first
         node *newVal = new node();
         cout << "Enter value: ";
         cin >> newVal->data;
         newVal->nextPtr = head;
         head=newVal;
+        length++;
     }
-    else if(pos>1 && pos<=length){
+    
+    else if(pos>1 && pos<=length){//insertion in middle
         temp = head;
+        node *cur;
         int i = 1;
         while (i != pos){
-            tail=temp;
+            cur=temp;
             temp = temp->nextPtr;
             i++;
         }
@@ -70,24 +64,76 @@ int main()
         cout << "Enter value: ";
         cin >> newVal->data;
         newVal->nextPtr = temp;
-        tail->nextPtr = newVal;
+        cur->nextPtr = newVal;
+        length++;
     }
-    else if(pos==length+1){
+    
+    else if(pos==length+1){//insertion at last
         node *newVal = new node();
         cout << "Enter value: ";
         cin >> newVal->data;
         newVal->nextPtr = nullptr;
         tail->nextPtr = newVal;
+        length++;
     }
     else{
-        cout<<"Invalid position";
+        cout<<"Invalid position for insertion"<<endl;
     }
-    length=0;
+
     temp=head;
     while (temp != nullptr){
         cout << temp->data << " -> " << temp->nextPtr << endl;
         temp = temp->nextPtr;
-        length++;
+    }
+    cout<<"Length of list: "<<length<<endl;
+
+    cout<<"Enter position you want to delete: ";
+    cin>>pos;
+    if(pos==1){//deletion at first
+        temp=head;
+        head=head->nextPtr;
+        delete temp;
+        length--;
+    }
+    
+    else if(pos>1 && pos<length){//deletion at middle
+        int i=1;
+        temp=head;
+        node *cur;
+        while(i<pos){
+            cur=temp;
+            temp=temp->nextPtr;
+            i++;
+        }
+        
+        cur->nextPtr=temp->nextPtr;
+        delete temp;
+        length--;
+    }
+
+    else if(pos==length){//deletion at last
+        int i=1;
+        temp=head;
+        node *cur;
+        while(i<length){
+            cur=temp;
+            temp=temp->nextPtr;
+            i++;
+        }
+        cur->nextPtr=nullptr;
+        tail=cur;
+        delete temp;
+        length--;
+    }
+
+    else{
+        cout<<"Invalid position for deletion. ";
+    }
+
+    temp=head;
+    while (temp != nullptr){
+        cout << temp->data << " -> " << temp->nextPtr << endl;
+        temp = temp->nextPtr;
     }
     cout<<"Length of list: "<<length<<endl;
 }
