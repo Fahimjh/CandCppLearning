@@ -103,11 +103,70 @@ int main(){
             cout<<"Invalid position."<<endl;
         }
         
-        cout<<"list legth: "<<length<<endl;
+        cout<<"list length: "<<length<<endl;
         cout<<"Do you want to insert more values? press y/Y to confirm: ";
         cin>>choice;
 
     }
+
+    cout<<head->prevPtr<<" <- "<<head->name<<" = "<<head<<" -> "<<head->nextPtr<<endl;
+    current=head->nextPtr;
+    while(current!=head){
+        cout<<current->prevPtr<<" <- "<<current->name<<" = "<<current<<" -> "<<current->nextPtr<<endl;
+        current=current->nextPtr;
+    }
+    cout<<"list legth: "<<length<<endl;
+
+    choice='y';
+    while(choice=='y'||choice=='Y'){
+        int pos;
+        cout<<"Enter position you want to delete: ";
+        cin>>pos;
+
+        if(pos==1){//deletion at first
+            node *temp=head;
+            head=head->nextPtr;
+            head->prevPtr=tail;
+            tail->nextPtr=head;
+            delete temp;
+            length--;
+        }
+
+        else if(pos>1 && pos <length){//deletion in middle
+            int i=1;
+            node *curr=head;
+            node *temp=nullptr;
+            node *next=nullptr;
+            while(i<pos){
+                temp=curr;
+                curr=curr->nextPtr;
+                i++;
+            }
+            next=curr->nextPtr;
+            next->prevPtr=temp;
+            temp->nextPtr=next;
+            delete curr;
+            length--;
+        }
+
+        else if(pos == length){//deletion at last
+            node *last=tail;
+            tail=tail->prevPtr;
+            tail->nextPtr=head;
+            head->prevPtr=tail;
+            delete last;
+            length--;
+        }
+
+        else{
+            cout<<"Invalid position."<<endl;
+        }
+        
+        cout<<"list length: "<<length<<endl;
+        cout<<"Do you want to delete more values? press y/Y to confirm: ";
+        cin>>choice;
+    }
+
     cout<<head->prevPtr<<" <- "<<head->name<<" = "<<head<<" -> "<<head->nextPtr<<endl;
     current=head->nextPtr;
     while(current!=head){
