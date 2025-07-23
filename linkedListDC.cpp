@@ -84,7 +84,7 @@ int main(){
             newNode->prevPtr=temp;
             newNode->nextPtr=curr;
             curr->prevPtr=newNode;
-            head->nextPtr=newNode;
+            temp->nextPtr=newNode;
         }
 
         else if(pos == length+1){//insertion at last
