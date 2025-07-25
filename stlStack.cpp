@@ -1,18 +1,28 @@
 #include<iostream>
 #include<stack>
 using namespace std;
-int main(){
-    stack<int>s,s2;
-    s.push(1);
-    s.push(2);
-    s.push(3);
-    s2.swap(s);
-    cout<<"stack size: "<<s.size()<<endl;
-    cout<<"stack size: "<<s2.size()<<endl;
-    while(!s2.empty()){
-        cout<<s2.top()<<" ";
-        s2.pop();
+
+void display(stack<int> & s){
+    while(!s.empty()){
+        cout<<s.top()<<endl;
+        s.pop();
     }
-    cout<<"stack size: "<<s.size()<<endl;
-    cout<<"stack size: "<<s2.size()<<endl;
+
+}
+
+int main(){
+    stack<int> s;
+    char choice='y';
+    while(choice=='y'|| choice=='Y'){
+        cout<<"Enter value: ";
+        int val;
+        cin>>val;
+        s.push(val);
+        cout<<"Press y/Y to insert more value: ";
+        cin>>choice;
+    }
+    cout<<s.top()<<endl;
+    display(s);
+    cout<<s.empty()<<endl;
+    
 }
