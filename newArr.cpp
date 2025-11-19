@@ -11,13 +11,13 @@ int main(){
         cin>>arr[i];
     }
     cout<<"Your array : ";
-    for(int i=0;i<5;i++){
+    for(int i=0;i<n;i++){
         cout<<arr[i]<<" ";
     }
     while(c!='y'){
         cout<<"\nEnter value you want to insert: ";
         cin>>val;
-        cout<<"Enter pos you want to insert: ";
+        cout<<"Enter position you want to insert: ";
         cin>>pos;
         if(pos==n){
             arr[n]=val;
@@ -29,7 +29,33 @@ int main(){
             }
             arr[pos-1]=val;n++;
         }
-        cout<<"\nPress y if you dont want to insert anymore: ";
+        else{
+            cout<<"invalid position";
+        }
+        cout<<"Press y if you dont want to insert anymore: ";
+        cin>>c;
+    }
+    cout<<"Your array : ";
+    for(int i=0;i<n;i++){
+        cout<<arr[i]<<" ";
+    }
+    c='n';
+    while(c!='y'){
+        cout<<"\nEnter position you want to delete: ";
+        cin>>pos;
+        if(pos==n){
+            n--;
+        }
+        else if(pos<n){
+            for(int i=pos-1;i<=n-2;i++){
+                arr[i]=arr[i+1];
+            }
+            n--;
+        }
+        else{
+            cout<<"invalid position";
+        }
+        cout<<"Press y if you dont want to delete anymore: ";
         cin>>c;
     }
     cout<<"Your array : ";
